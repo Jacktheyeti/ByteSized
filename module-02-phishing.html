@@ -3,52 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteSized Security | Interactive Training</title>
+    <title>Module 02: Phishing | ByteSized</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f1f5f9; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .header { margin-top: 20px; text-align: center; }
-        .header h1 { margin-bottom: 5px; color: #38bdf8; }
-        .header p { color: #94a3b8; font-size: 0.9rem; }
+        :root { --brand: #e11d48; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --border: #334155; }
         
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the massive game frame */
+        }
+
+        /* --- Navigation --- */
+        .breadcrumb { 
+            width: 100%; 
+            max-width: 1800px; /* Matches the new game size */
+            margin-bottom: 20px; 
+            color: #94a3b8; 
+            font-size: 0.9rem;
+        }
+        .breadcrumb a { color: var(--brand); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* --- The "Cinema Mode" Game Container --- */
         .game-container {
-            width: 90%;
-            max-width: 1000px;
-            height: 700px; /* Adjust height based on your game */
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            margin: 20px 0;
+            width: 100%;
+            max-width: 1800px; /* Huge width for 1920x1080 screens */
+            
+            /* This checks the viewport height. 
+               It ensures the game is huge but never taller than the screen 
+               so the user doesn't have to scroll to see the bottom. */
+            height: 80vh; 
+            
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Deep shadow for pop */
+            margin-bottom: 30px;
         }
 
-        iframe { width: 100%; height: 100%; border: none; }
+        /* --- Iframe Fixes --- */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; /* FIXES THE BLACK BAR AT BOTTOM */
+        }
 
-        .context-bar {
-            width: 90%; max-width: 1000px;
-            display: flex; justify-content: space-between;
-            font-size: 0.85rem; color: #94a3b8;
-            margin-bottom: 20px;
+        /* --- Info Section --- */
+        .meta-grid { 
+            width: 100%;
+            max-width: 1800px;
+            display: grid; 
+            grid-template-columns: 3fr 1fr; /* Widescreen layout */
+            gap: 60px; 
+            margin-bottom: 50px;
         }
         
-        a.back-btn { color: #38bdf8; text-decoration: none; font-weight: bold; }
-        a.back-btn:hover { text-decoration: underline; }
+        h1 { margin: 0 0 20px 0; font-size: 2rem; letter-spacing: -1px; }
+        h2 { color: var(--brand); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        ul { line-height: 1.8; color: #cbd5e1; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        
+        p { color: #cbd5e1; line-height: 1.6; }
+        strong { color: white; }
+
+        /* Responsive check for smaller laptops */
+        @media (max-width: 1200px) {
+            .game-container { height: auto; aspect-ratio: 16/9; } /* Revert to standard ratio on small screens */
+            .meta-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>ByteSized Security Module</h1>
-        <p>Topic: Social Engineering & Phishing Indicators</p>
+    <div class="breadcrumb">
+        <a href="index.html">← Course Catalog</a> &nbsp;/&nbsp; Module 02
     </div>
 
     <div class="game-container">
         <iframe src="https://tga.thetrainingarcade.com/games/scenarios/byte-sized-public" allowfullscreen></iframe>
     </div>
 
-    <div class="context-bar">
-        <span>Framework: NIST CSF (PR.AT-1)</span>
-        <a href="https://jacktheyeti.github.io" class="back-btn">← Return to Main Portfolio</a>
+    <div class="meta-grid">
+        <div class="main-info">
+            <h1>Module 02: Phishing & Social Engineering</h1>
+            <h2>Learning Objectives</h2>
+            <p>Passive watching doesn't build muscle memory and lately, phishing simulations were starting to "feel like that". I wanted to simulate a 'high-stakes situation that empowered users to explore failure in a safe environment. Leveraging Scenarios from The Training Arcade, I curated a branching game where users could explore and understand the consequences of their choices without risking real-world assets. The learning didn't stop there because a winner was randomly selected to join the security team in designing and executing the phishing simulation.</p>
+            <ul>
+                <li><strong>dentify Sophisticated Red Flags:</strong> Train users to look past the subject line to detect "Urgency Traps," "Close-Enough" spoofed domains, and generic greetings designed to manipulate behavior.</li>
+                <li><strong>Apply Technical Validation Skills:</strong> Instill the habit of the "Hover Test" and sender verification, ensuring team members can differentiate between legitimate ELB communications and malicious redirects.</li>
+                <li><strong>Navigate Role-Specific Threats:</strong> Provide a deep dive into department-specific social engineering (e.g., "Whaling" for Sam the Builder or "Supply Chain" attacks for Alex the Connector) to ensure the training feels relevant to their actual daily workflow.</li>
+                <li><strong>Execute Incident Response Protocols:</strong> Reinforce the exact steps for immediate remediation following a suspected click, emphasizing transparency and reporting over silent panic.</li>
+            </ul>
+        </div>
+        
+        <div class="side-info">
+            <h2>Module Specs</h2>
+            <p><strong>Duration:</strong> 4 mins</p>
+            <p><strong>Format:</strong> Interactive Simulation</p>
+            <p><strong>Engagement Rate:</strong> TBD</p>
+        </div>
     </div>
 
 </body>
