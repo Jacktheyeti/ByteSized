@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 01: Introduction | ByteSized</title>
+    <style>
+        :root { --brand: #e11d48; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --border: #334155; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the massive game frame */
+        }
+
+        /* --- Navigation --- */
+        .breadcrumb { 
+            width: 100%; 
+            max-width: 1800px; /* Matches the new game size */
+            margin-bottom: 20px; 
+            color: #94a3b8; 
+            font-size: 0.9rem;
+        }
+        .breadcrumb a { color: var(--brand); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* --- The "Cinema Mode" Game Container --- */
+        .game-container {
+            width: 100%;
+            max-width: 1800px; /* Huge width for 1920x1080 screens */
+            
+            /* This checks the viewport height. 
+               It ensures the game is huge but never taller than the screen 
+               so the user doesn't have to scroll to see the bottom. */
+            height: 80vh; 
+            
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Deep shadow for pop */
+            margin-bottom: 30px;
+        }
+
+        /* --- Iframe Fixes --- */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; /* FIXES THE BLACK BAR AT BOTTOM */
+        }
+
+        /* --- Info Section --- */
+        .meta-grid { 
+            width: 100%;
+            max-width: 1800px;
+            display: grid; 
+            grid-template-columns: 3fr 1fr; /* Widescreen layout */
+            gap: 60px; 
+            margin-bottom: 50px;
+        }
+        
+        h1 { margin: 0 0 20px 0; font-size: 2rem; letter-spacing: -1px; }
+        h2 { color: var(--brand); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        ul { line-height: 1.8; color: #cbd5e1; padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        
+        p { color: #cbd5e1; line-height: 1.6; }
+        strong { color: white; }
+
+        /* Responsive check for smaller laptops */
+        @media (max-width: 1200px) {
+            .game-container { height: auto; aspect-ratio: 16/9; } /* Revert to standard ratio on small screens */
+            .meta-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="breadcrumb">
+        <a href="index.html">← Course Catalog</a> &nbsp;/&nbsp; Module 02
+    </div>
+
+    <div class="meta-grid">
+        <div class="main-info">
+           <h1>Module 01: Security Training Sucks. We're Fixing it.</h1>
+            <h2>Learning Objectives</h2>
+            <p>I view security as a lifestyle, not a lunch-and-learn. My goal with the first module was to bridge the gap between home safety and office security, thereby lowering the barrier to entry for employee engagement. Not only did I see a 110% engagement rate with the module, fellow coworker mentioned they were excited to see what was next.</p>
+            <ul>
+                <li><strong>Establish Foundational Hygiene:</strong> Empower team members to implement baseline security habits, such as identifying password reuse and adopting professional password management tools.</li>
+                <li><strong>Master Physical and Digital Access:</strong> Standardize the habit of securing workstations through screen locking and environmental awareness, ensuring the "Least Privilege" principle begins at the desk.</li>
+                <li><strong>Proactive Lifecycle Management:</strong> Shift the responsibility of system maintenance to the user by emphasizing the importance of immediate OS patching and local data cleanup.</li>
+                <li><strong>Cultivate Reporting Instincts:</strong> Neutralize the fear associated with reporting by framing the "Security Snitch" as a vital team player who protects the collective from cover-up risks.</li>
+            </ul>
+        </div>
+        
+        <div class="side-info">
+            <h2>Module Specs</h2>
+            <p><strong>Duration:</strong> 4 mins</p>
+            <p><strong>Format:</strong> Interactive Checklist</p>
+            <p><strong>Engagement Rate:</strong> 110%</p>
+        </div>
+
+    </div>
+    <div class="game-container">
+        <iframe src="https://mb.elb.studio/share/Tqyhbhk7pPycWJRSAF9Qev9z" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
