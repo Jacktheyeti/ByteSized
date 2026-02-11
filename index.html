@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteSized Security</title>
+    <style>
+        :root { --brand: #e11d48; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 40px; }
+        
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; margin: 0; }
+        .header p { color: #94a3b8; max-width: 600px; margin: 10px auto; }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 25px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        /* Active Card Style */
+        .card { 
+            background: var(--card); 
+            border: 1px solid #334155; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: transform 0.2s; 
+            display: flex; flex-direction: column;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--brand); }
+        
+        .thumb { height: 160px; background: #334155; display: flex; align-items: center; justify-content: center; color: #64748b; }
+        .content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .tag { font-size: 0.75rem; text-transform: uppercase; color: var(--brand); font-weight: bold; letter-spacing: 1px; }
+        .title { font-size: 1.25rem; margin: 10px 0; font-weight: 600; }
+        .desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; flex-grow: 1; }
+        
+        .btn { 
+            background: var(--brand); color: white; text-decoration: none; 
+            padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; 
+            display: block; width: 100%; box-sizing: border-box;
+        }
+
+        /* "Coming Soon" Card Style */
+        .card.locked { opacity: 0.5; pointer-events: none; border-style: dashed; }
+        .card.locked .btn { background: #334155; color: #94a3b8; }
+
+        /* Navigation Back */
+        .nav-back { position: absolute; top: 20px; left: 20px; color: #94a3b8; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <a href="https://jack-schafer.github.io" class="nav-back">← Back to Portfolio</a>
+
+    <div class="header">
+        <h1>ByteSized Curriculum</h1>
+        <p>Micro-learning modules designed to reduce human risk through gamified interaction.</p>
+    </div>
+
+    <div class="grid">
+        
+        <div class="card">
+            <div class="thumb">INSERT IMAGE 1</div> <div class="content">
+                <span class="tag">Module 01 • Intro/span>
+                <div class="title">Module 01 • Intro</div>
+                <div class="desc">Security Training Sucks. We're fixing it.</div>
+                <a href="module-01-intro.html" class="btn">Start Module</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="thumb">INSERT IMAGE 2</div>
+            <div class="content">
+                <span class="tag">Module 02 • Phishing</span>
+                <div class="title">Module 02 • Phishing</div>
+                <div class="desc">Clicking stuff is why we can't have nice things.</div>
+                <a href="module-02-phishing.html" class="btn">Start Module</a>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
