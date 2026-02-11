@@ -3,52 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteSized Security</title>
+    <title>ByteSized Security | Curriculum</title>
     <style>
-        :root { --brand: #e11d48; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 40px; }
-        
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 2.5rem; margin: 0; }
-        .header p { color: #94a3b8; max-width: 600px; margin: 10px auto; }
-
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 25px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #e11d48; /* Your Brand Red */
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
         }
 
-        /* Active Card Style */
-        .card { 
-            background: var(--card); 
-            border: 1px solid #334155; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: transform 0.2s; 
-            display: flex; flex-direction: column;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--brand); }
-        
-        .thumb { height: 160px; background: #334155; display: flex; align-items: center; justify-content: center; color: #64748b; }
-        .content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-        .tag { font-size: 0.75rem; text-transform: uppercase; color: var(--brand); font-weight: bold; letter-spacing: 1px; }
-        .title { font-size: 1.25rem; margin: 10px 0; font-weight: 600; }
-        .desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; flex-grow: 1; }
-        
-        .btn { 
-            background: var(--brand); color: white; text-decoration: none; 
-            padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; 
-            display: block; width: 100%; box-sizing: border-box;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
         }
 
-        /* "Coming Soon" Card Style */
-        .card.locked { opacity: 0.5; pointer-events: none; border-style: dashed; }
-        .card.locked .btn { background: #334155; color: #94a3b8; }
+        /* --- Navigation --- */
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--accent); }
 
-        /* Navigation Back */
-        .nav-back { position: absolute; top: 20px; left: 20px; color: #94a3b8; text-decoration: none; }
+        /* --- Header --- */
+        .header { margin-bottom: 60px; max-width: 800px; }
+        .header h1 { font-size: 2.5rem; margin: 0 0 10px 0; letter-spacing: -1px; }
+        .header p { color: var(--text-muted); line-height: 1.6; font-size: 1.1rem; }
+
+        /* --- Grid Layout --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+        }
+
+        /* --- The Card --- */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- CSS "Thumbnail" (No Images Needed) --- */
+        .card-header {
+            height: 140px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .module-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.05); /* Subtle watermark effect */
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            line-height: 1;
+        }
+
+        .icon-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Card Content --- */
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .tags { display: flex; gap: 8px; margin-bottom: 15px; }
+        .tag {
+            background: rgba(225, 29, 72, 0.1); /* Low opacity brand color */
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .title { font-size: 1.25rem; font-weight: 700; margin: 0 0 10px 0; color: white; }
+        .desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 25px; flex-grow: 1; }
+
+        /* --- Button --- */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            text-align: center;
+            background: var(--accent); /* Filled button as per your preference */
+            border: 1px solid var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn:hover { background: transparent; color: var(--accent); }
+
+        /* --- Locked/Future State --- */
+        .card.locked { opacity: 0.6; pointer-events: none; border-style: dashed; }
+        .card.locked .card-header { background: #161f30; }
+        .card.locked .icon-text { color: var(--text-muted); }
+        .card.locked .btn { background: #334155; border-color: #334155; color: var(--text-muted); }
+
     </style>
 </head>
 <body>
@@ -61,10 +145,14 @@
     </div>
 
     <div class="grid">
-        
+
         <div class="card">
-            <div class="thumb">INSERT IMAGE 1</div> <div class="content">
-                <span class="tag">Module 01 • Intro/span>
+            <div class="card-header">
+                <span class="module-number">01</span>
+                <span class="icon-text">Intro</span>
+            </div>
+            <div class="card-body">
+                <div class="tags"><span class="tag">Module 01 • Intro</span></div>
                 <div class="title">Module 01 • Intro</div>
                 <div class="desc">Security Training Sucks. We're fixing it.</div>
                 <a href="module-01-intro.html" class="btn">Start Module</a>
@@ -72,15 +160,17 @@
         </div>
 
         <div class="card">
-            <div class="thumb">INSERT IMAGE 2</div>
-            <div class="content">
-                <span class="tag">Module 02 • Phishing</span>
+            <div class="card-header">
+                <span class="module-number">02</span>
+                <span class="icon-text">Phishing</span>
+            </div>
+            <div class="card-body">
+                <div class="tags"><span class="tag">Module 02 • Phishing</span></div>
                 <div class="title">Module 02 • Phishing</div>
                 <div class="desc">Clicking stuff is why we can't have nice things.</div>
                 <a href="module-02-phishing.html" class="btn">Start Module</a>
             </div>
         </div>
-
 
     </div>
 
